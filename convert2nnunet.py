@@ -27,8 +27,8 @@ def save_pickle(pickle_file, save_path):
 
 def is_stitching_correct(subject_dir):
     sub_exists = os.path.isdir(subject_dir)
-    wat_exists = os.path.isfile(os.path.join(subject_dir, 'wat.nii.gz'))
-    inp_exists = os.path.isfile(os.path.join(subject_dir, 'inp.nii.gz'))
+    wat_exists = os.path.isfile(os.path.join(subject_dir, 'water.nii.gz'))
+    inp_exists = os.path.isfile(os.path.join(subject_dir, 'in.nii.gz'))
     opp_exists = os.path.isfile(os.path.join(subject_dir, 'opp.nii.gz'))
     fat_exists = os.path.isfile(os.path.join(subject_dir, 'fat.nii.gz'))
     
@@ -183,7 +183,7 @@ def main():
         if num_channels == 1:
             json_file['modality'] = {'0': 'wat'}
         else:
-            json_file['modality'] = {'0': 'wat', '1': 'opp', '2': 'fat', '3': 'inp'}
+            json_file['modality'] = {'0': 'water', '1': 'opp', '2': 'fat', '3': 'in'}
         json_file['labels'] = {'0': 'background', '1': 'liv', '2': 'spl', '3': 'lkd', '4': 'rkd', '5': 'pnc'}
 
     format_data(nifti_folder, nnunet_folder, json_file, num_subjects, start_idx)
